@@ -26,6 +26,7 @@ sprites.onOverlap(SpriteKind.STAT, SpriteKind.CARGO, function (sprite, otherSpri
     CAPTURED = 0
     done = 1
     SPACE.setImage(SSteps[stage])
+    info.changeScoreBy(50)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     Tug.setImage(assets.image`SpaceTugN`)
@@ -35,6 +36,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onDestroyed(SpriteKind.CARGO, function (sprite) {
     delivery = 0
+    info.changeScoreBy(-10)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.CARGO, function (sprite, otherSprite) {
     cargo.follow(Tug)
@@ -190,6 +192,7 @@ SPACE.setStayInScreen(true)
 SPACE.setBounceOnWall(true)
 SPACE.setPosition(23, 17)
 SPACE.setVelocity(32, 0)
+game.splash("Capture the cargo modules and deliver them to the space station!")
 game.onUpdateInterval(500, function () {
     Tug.setVelocity(Tug.vx * 0.7, Tug.vy * 0.7)
 })
