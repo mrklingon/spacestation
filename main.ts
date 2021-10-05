@@ -4,18 +4,21 @@ namespace SpriteKind {
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     Tug.setImage(assets.image`SpaceTugS`)
+    music.thump.play()
     Tug.setVelocity(Tug.vx, Tug.vy - 20)
     pause(200)
     Tug.setImage(assets.image`SpaceTug`)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Tug.setImage(assets.image`SpaceTugE`)
+    music.thump.play()
     Tug.setVelocity(Tug.vx - 20, Tug.vy)
     pause(200)
     Tug.setImage(assets.image`SpaceTug`)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     Tug.setImage(assets.image`SpaceTugW`)
+    music.thump.play()
     Tug.setVelocity(Tug.vx + 20, Tug.vy)
     pause(200)
     Tug.setImage(assets.image`SpaceTug`)
@@ -30,6 +33,7 @@ sprites.onOverlap(SpriteKind.STAT, SpriteKind.CARGO, function (sprite, otherSpri
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     Tug.setImage(assets.image`SpaceTugN`)
+    music.thump.play()
     Tug.setVelocity(Tug.vx, Tug.vy + 20)
     pause(200)
     Tug.setImage(assets.image`SpaceTug`)
@@ -177,8 +181,10 @@ assets.image`SpaceStation`,
 assets.image`SpaceStation0`,
 assets.image`SpaceStation1`,
 assets.image`SpaceStation2`,
+assets.image`SpaceStation4`,
 assets.image`SpaceStation3`,
-assets.image`SpaceStation4`
+assets.image`SpaceStation5`,
+assets.image`SpaceStation6`
 ]
 done = 0
 CAPTURED = 0
@@ -193,6 +199,11 @@ SPACE.setBounceOnWall(true)
 SPACE.setPosition(23, 17)
 SPACE.setVelocity(32, 0)
 game.splash("Capture the cargo modules and deliver them to the space station!")
+game.onUpdateInterval(2000, function () {
+    if (6 == stage) {
+        game.over(true)
+    }
+})
 game.onUpdateInterval(500, function () {
     Tug.setVelocity(Tug.vx * 0.7, Tug.vy * 0.7)
 })
@@ -208,7 +219,7 @@ game.onUpdateInterval(500, function () {
         cargo.setStayInScreen(false)
         cargo.setFlag(SpriteFlag.AutoDestroy, true)
         cargo.setPosition(20, 109)
-        cargo.setVelocity(randint(30, 60), randint(-60, -100))
+        cargo.setVelocity(randint(30, 60), randint(-60, -90))
         delivery = 1
     }
 })
