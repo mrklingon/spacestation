@@ -184,7 +184,8 @@ assets.image`SpaceStation2`,
 assets.image`SpaceStation4`,
 assets.image`SpaceStation3`,
 assets.image`SpaceStation5`,
-assets.image`SpaceStation6`
+assets.image`SpaceStation6`,
+assets.image`SpaceStation7`
 ]
 done = 0
 CAPTURED = 0
@@ -200,7 +201,7 @@ SPACE.setPosition(23, 17)
 SPACE.setVelocity(32, 0)
 game.splash("Capture the cargo modules and deliver them to the space station!")
 game.onUpdateInterval(2000, function () {
-    if (6 == stage) {
+    if (7 == stage) {
         game.over(true)
     }
 })
