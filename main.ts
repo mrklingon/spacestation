@@ -201,7 +201,7 @@ SPACE.setPosition(23, 17)
 SPACE.setVelocity(32, 0)
 game.splash("Capture the cargo modules and deliver them to the space station!")
 game.onUpdateInterval(2000, function () {
-    if (7 == stage) {
+    if (8 == stage) {
         game.over(true)
     }
 })
