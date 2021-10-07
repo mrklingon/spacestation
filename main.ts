@@ -215,12 +215,22 @@ game.onUpdateInterval(500, function () {
 })
 game.onUpdateInterval(500, function () {
     if (0 == delivery) {
-        pause(randint(500, 2000))
-        cargo = sprites.create(assets.image`Cargo`, SpriteKind.CARGO)
-        cargo.setStayInScreen(false)
-        cargo.setFlag(SpriteFlag.AutoDestroy, true)
-        cargo.setPosition(20, 109)
-        cargo.setVelocity(randint(30, 60), randint(-60, -90))
-        delivery = 1
+        if (0 == randint(0, 1)) {
+            pause(randint(500, 2000))
+            cargo = sprites.create(assets.image`Cargo`, SpriteKind.CARGO)
+            cargo.setStayInScreen(false)
+            cargo.setFlag(SpriteFlag.AutoDestroy, true)
+            cargo.setPosition(135, 109)
+            cargo.setVelocity(randint(-60, -30), randint(-60, -90))
+            delivery = 1
+        } else {
+            pause(randint(500, 2000))
+            cargo = sprites.create(assets.image`Cargo`, SpriteKind.CARGO)
+            cargo.setStayInScreen(false)
+            cargo.setFlag(SpriteFlag.AutoDestroy, true)
+            cargo.setPosition(20, 109)
+            cargo.setVelocity(randint(30, 60), randint(-60, -90))
+            delivery = 1
+        }
     }
 })
